@@ -92,4 +92,6 @@ for shape in shapes:
 	silence = silence.overlay(AudioSegment.from_file(mapping[shape]))
 
 silence.export("result.wav", format='wav')
-play(silence)
+
+import playsound
+playsound.playsound("result.wav", True)
