@@ -9,6 +9,8 @@ import imutils
 import cv2
 from pydub import AudioSegment
 from pydub.playback import play
+import playsound
+
 
 
 # construct the argument parse and parse the arguments
@@ -44,17 +46,17 @@ shapes = []
 
 mapping = {
 	'red triangle': 'redtriangle.wav',
-	'red square': 'redsquare.wav',
+	'red rectangle': 'redsquare.wav',
 	'red pentagon': 'redpentagon.wav',
 	'red circle': 'redcircle.wav',
 
 	'blue triangle': 'bluetriangle.wav',
-	'blue square': 'bluesquare.wav',
+	'blue rectangle': 'bluesquare.wav',
 	'blue pentagon': 'bluepentagon.wav',
 	'blue circle': 'bluecircle.wav',
 
 	'green triangle': 'greentriangle.wav',
-	'green square': 'greensquare.wav',
+	'green rectangle': 'greensquare.wav',
 	'green pentagon': 'greenpentagon.wav',
 	'green circle': 'greencircle.wav'
 }
@@ -93,5 +95,4 @@ for shape in shapes:
 
 silence.export("result.wav", format='wav')
 
-import playsound
 playsound.playsound("result.wav", True)

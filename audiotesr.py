@@ -1,9 +1,6 @@
 from pydub import AudioSegment
+from pydub import generators
 
-sound1 = AudioSegment.from_file("1.wav")
-sound2 = AudioSegment.from_file("2.wav")
-
-combined = sound1.overlay(sound2)
-
-combined.export("result.wav", format='wav')
-play(combined)
+sound1 = generators.Sine(440).to_audio_segment(duration=10000)
+sound1 = sound1.overlay(generators.Sine(240).to_audio_segment(duration=10000))
+sound1.export("result.wav", format='wav')
