@@ -7,6 +7,9 @@ from pyimagesearch.colorlabeler import ColorLabeler
 import argparse
 import imutils
 import cv2
+from pydub import AudioSegment
+from pydub.playback import play
+
 
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
@@ -37,6 +40,27 @@ cnts = imutils.grab_contours(cnts)
 sd = ShapeDetector()
 cl = ColorLabeler()
 
+shapes = []
+
+mapping = {
+	'red triangle': 'redtriangle.wav',
+	'red square': 'redsquare.wav',
+	'red pentagon': 'redpentagon.wav',
+	'red circle': 'redcircle.wav',
+
+	'blue triangle': 'bluetriangle.wav',
+	'blue square': 'bluesquare.wav',
+	'blue pentagon': 'bluepentagon.wav',
+	'blue circle': 'bluecircle.wav',
+
+	'green triangle': 'greentriangle.wav',
+	'green square': 'greensquare.wav',
+	'green pentagon': 'greenpentagon.wav',
+	'green circle': 'greencircle.wav'
+}
+
+silence = AudioSegment.silent(duration=10000)
+
 # loop over the contours
 for c in cnts:
 	# compute the center of the contour
@@ -55,6 +79,7 @@ for c in cnts:
 	c *= ratio
 	c = c.astype("int")
 	text = "{} {}".format(color, shape)
+	shapes.append(text)
 	cv2.drawContours(image, [c], -1, (0, 255, 0), 2)
 	cv2.putText(image, text, (cX, cY),
 		cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
@@ -62,3 +87,9 @@ for c in cnts:
 	# show the output image
 	cv2.imshow("Image", image)
 	cv2.waitKey(0)
+
+for shape in shapes:
+	silence = silence.overlay(AudioSegment.from_file(mapping[shape]))
+
+silence.export("result.wav", format='wav')
+play(silence)

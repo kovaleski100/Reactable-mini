@@ -6,3 +6,4 @@ sound2 = AudioSegment.from_file("2.wav")
 combined = sound1.overlay(sound2)
 
 combined.export("result.wav", format='wav')
+play(combined)
