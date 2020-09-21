@@ -1,10 +1,10 @@
-# do-re-milagre-
-trabalho de musica de ultima hora. Vai ser top, amanhã tem prova de redes
+# Trabalho da cadedira computação e musica
 
+Nesse trabalho implementamos uma versão simplista do instrumento musical chamado Reactable.
 
-dependentes químicos: \n
+Bibliotecas usadas:
 visão:
-pip scipy \n
-pip imutils \n
-som: \n
-pip pydub \n
+pip scipy <br/>
+pip imutils <br/>
+som: <br/>
+pip pydub <br/>
