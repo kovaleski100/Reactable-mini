@@ -1,4 +1,4 @@
-# Trabalho da cadedira computação e musica
+# Trabalho da cadeira computação e musica
 
 Nesse trabalho implementamos uma versão simplista do instrumento musical chamado Reactable.
 
